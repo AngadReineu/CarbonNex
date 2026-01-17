@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+/* body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+} */
+ body{
+  font-family: "Oswald", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400; 
+  background-color: #faf6f0;
+   background-image: url("./assets/xv.png");
+   
+  color: #4B2E1E;
+  background-repeat: repeat;
+}
+ ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a1a1a1;
+}
+
+
+* {
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  ring-width: 2px;
+}
+
