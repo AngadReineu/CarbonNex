@@ -1,8 +1,8 @@
 import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { LayoutDashboard, Database, LogOut, User } from 'lucide-react';
+import { LayoutDashboard, Database, LogOut, User,Activity } from 'lucide-react';
 import { Calculator as CalculatorIcon } from "lucide-react";
-import { useAuth } from '../../context/AuthContext';
+// import { useAuth } from '../../context/AuthContext';
 import bg from '../../assets/xv.png'
 
 const Sidebar = ({ user, onLogout }) => {
@@ -21,12 +21,17 @@ const Sidebar = ({ user, onLogout }) => {
   path: "/calculator",
   label: "Calculator",
   icon: <CalculatorIcon className="w-5 h-5" />
-}
+},
+ {
+    path: "/logs",
+    label: "Activity Logs",
+    icon: <Activity className="w-5 h-5" />
+  }
 
   ];
 
   return (
-    <aside className="w-64 bg-[##00d5be]/70 min-h-[calc(100vh-80px)] border-r border-white/40 shadow-xl flex flex-col"
+    <aside className="w-64 min-h-[calc(100vh-80px)] border-r border-white/40 shadow-xl flex flex-col"
     style={{
     backgroundImage: `url(${bg})`,
   }}>

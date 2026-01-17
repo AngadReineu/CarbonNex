@@ -12,9 +12,12 @@ const userActivitySchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-
-    path: String,
-    method: String,
+    description: {
+      type: String,
+    },
+    metadata: {
+      type: Object,
+    },
   },
   { timestamps: true }
 );

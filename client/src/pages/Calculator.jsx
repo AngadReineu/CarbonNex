@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import axios from "../services/api";
+
 
 const Calculator = () => {
   const [display, setDisplay] = useState('0');
@@ -105,22 +107,32 @@ const Calculator = () => {
     return result;
   };
 
-  const handleEquals = () => {
-    if (operator === null || waitingForSecondOperand) return;
+  const handleEquals = async () => {
+  if (operator === null || waitingForSecondOperand) return;
+  const result = performCalculation();
+  axios.post("/activities/log", {
+    action: "CALCULATOR_USE",
+    description: `Calculated ${display} result = ${result}`,
+  }).catch(() => {});
 
-    const result = performCalculation();
-    setDisplay(String(result));
-    setFirstOperand(null);
-    setOperator(null);
-    setWaitingForSecondOperand(false);
-  };
+  setDisplay(String(result));
+  setFirstOperand(null);
+  setOperator(null);
+  setWaitingForSecondOperand(false);
+};
 
-  const resetCalculator = () => {
-    setDisplay('0');
-    setFirstOperand(null);
-    setOperator(null);
-    setWaitingForSecondOperand(false);
-  };
+
+ const resetCalculator = () => {
+  axios.post("/activities/log", {
+    action: "CALCULATOR_RESET",
+    description: "Reset calculator",
+  }).catch(() => {});
+  setDisplay('0');
+  setFirstOperand(null);
+  setOperator(null);
+  setWaitingForSecondOperand(false);
+};
+
 
   const handleBackspace = () => {
     if (display.length > 1) {
@@ -160,6 +172,13 @@ const Calculator = () => {
         return baseClass + "bg-gray-700 hover:bg-gray-600 text-white h-16";
     }
   };
+  useEffect(() => {
+  axios.post("/activities/log", {
+    action: "CALCULATOR_OPEN",
+    description: "Opened calculator page",
+  }).catch(() => {});
+}, []);
+
 
   return (
    
