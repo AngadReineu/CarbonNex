@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from "../services/api";
 
 
@@ -100,7 +100,7 @@ const Calculator = () => {
     return inputValue;
 }
 
-  // history
+  //history
     const calculation = `${firstOperand} ${operator} ${inputValue} = ${result}`;
     setCalculationHistory(prev => [calculation, ...prev.slice(0, 4)]);
     
